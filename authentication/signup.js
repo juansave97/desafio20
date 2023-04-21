@@ -12,6 +12,7 @@ const signup = () => {
     }, async (req, username, password, done) => {
         try {
             const user = await UserModel.findOne({ username });
+            
             if (user) {
                 return done(null, false);
             }
@@ -20,6 +21,7 @@ const signup = () => {
             newUser.username = username;
             newUser.password = createHash(password); //No se puede volver a conocer la contraseña luego de realizarle el hash
             newUser.email = req.body.email;
+            newUser.phone = req.body.phone
 
             const userSave = await newUser.save();
 

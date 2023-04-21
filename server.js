@@ -133,9 +133,9 @@ const logoutRouter = require(`./routers/logoutRouter`);
 
 
 //Routers
-app.use(`/`, homeRouter);
+app.use(`/`, formRouter);
 app.use(`/login2`, login2RouterGet);
-app.use(`/form`, isLogged, formRouter);
+app.use(`/productos`, isLogged, formRouter);
 app.use(`/login`, isLogged, loginRouterGet);
 app.use(`/login`, isLogged, loginRouterPost); //chat
 app.use(`/chat`, isLogged, chatRouter);
@@ -148,15 +148,15 @@ app.use(`/objectRandomOUT`, objectRandomRouterOUT);
 app.use(`/signup2`, signup2Router);
 app.use(`/bienvenida`, isLogged, bienvenidaRouter);
 app.use(`/errorLog`, isLogged, errorLogRouter);
-app.use(`/errorSignup`, isLogged, errorSignupRouter);
+app.use(`/errorSignup`, errorSignupRouter);
 app.use(`/logout`, logoutRouter);
 app.post('/login2', passport.authenticate('login', { //indicamos el controlador de passport, llega desde el formulario de login.
-    successRedirect: '/bienvenida', //redirect es con método get, vamos a home.
+    successRedirect: '/productos', //redirect es con método get, vamos a home.
     failureRedirect: `/errorLog`, // redirect es con método get, vamos a /login de get.
     failureFlash: true  // nos permite enviar mensajes.
 }));
 app.post('/signup2', passport.authenticate('signup', {//indicamos el controlador de passport, llega desde el formulario de signup.
-    successRedirect: '/', // redirect es con método get, vamos a home.
+    successRedirect: '/productos', // redirect es con método get, vamos a home.
     failureRedirect: `/errorSignup`, // redirect es con método get, vamos a /signup de signup.
     failureFlash: true // nos permite enviar mensajes.
 }));

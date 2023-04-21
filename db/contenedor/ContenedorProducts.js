@@ -8,13 +8,14 @@ class Contenedor {
     async save(product) {
         try {
             // Instancia del modelo message
-            const newProduct = new this.messageModel(product);
+            const newProduct = new this.productsModel(product);
 
             this.mongoDB
                 .then(_ => newProduct.save())
                 .catch(err => console.log(`Error: ${err.message}`));
 
         } catch (error) {
+            console.debug(error)
             throw Error(`Error en save`);
         }
     }
@@ -76,7 +77,7 @@ class Contenedor {
         }
     }
 
-    async deleteProductById(idCart, idProduct) {
+    async deleteProductById(idC art, idProduct) {
         let docCart = false;
         let docProduct = false
 
