@@ -40,6 +40,17 @@ class Contenedor {
         }
     }
 
+    async getAllProductsByCategory(category) {
+        let docs = false
+        docs = await this.productsModel.find({ category: category });
+        
+        if (docs) {
+            return docs;
+        } else {
+            return false;
+        }
+    }
+
 
     /*
     async getProductsByID(idCart) {

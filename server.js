@@ -115,6 +115,7 @@ deserializeUser();
 //Routers import
 const homeRouter = require(`./routers/homeRouter`);
 const formRouter = require(`./routers/formRouter`);
+const productsRouter = require(`./routers/productsRouter`);
 const loginRouterGet = require(`./routers/loginRouterGet`);
 const loginRouterPost = require(`./routers/loginRouterPost`);
 const chatRouter = require(`./routers/chatRouter`);
@@ -135,7 +136,8 @@ const logoutRouter = require(`./routers/logoutRouter`);
 //Routers
 app.use(`/`, formRouter);
 app.use(`/login2`, login2RouterGet);
-app.use(`/productos`, isLogged, formRouter);
+app.use(`/nuevo-producto`, isLogged, formRouter);
+app.use(`/productos`, isLogged, productsRouter);
 app.use(`/login`, isLogged, loginRouterGet);
 app.use(`/login`, isLogged, loginRouterPost); //chat
 app.use(`/chat`, isLogged, chatRouter);

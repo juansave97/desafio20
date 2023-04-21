@@ -1,2 +1,7 @@
 [2023-03-08T16:07:52.448] [WARN] warnArchive - Estado: 404, Ruta consultada: /favicon.ico, Metodo GET
 [2023-03-08T16:12:42.172] [WARN] warnArchive - Estado: 404, Ruta consultada: /api/formProductos.js, Metodo GET
+[2023-04-21T17:41:00.195] [WARN] warnArchive - Estado: 404, Ruta consultada: /favicon.ico, Metodo GET
+[2023-04-21T18:13:52.314] [WARN] warnArchive - Estado: 404, Ruta consultada: /indexProducts.ejs, Metodo GET
+[2023-04-21T18:16:05.101] [WARN] warnArchive - Estado: 404, Ruta consultada: /products, Metodo GET
+[2023-04-21T18:50:49.913] [WARN] warnArchive - Estado: 404, Ruta consultada: /favicon.ico, Metodo GET
+[2023-04-21T20:21:56.291] [WARN] warnArchive - Estado: 404, Ruta consultada: /public/productsByCategory.js, Metodo GET

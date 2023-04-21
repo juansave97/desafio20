@@ -9,17 +9,22 @@ const socketIoProducts = (io) => {
         socket.on(`sendProduct`, async () => {
             //const allProductsFromDB = await selectAllProducts();
             const allProductsFromDB = await storageProducts.getAll();
-
             //Servidor --> Cliente : Se envian todos los mensajes al usuario que se conectó.
             socket.emit(`allProducts`, allProductsFromDB);
 
+        });
+
+        socket.on(`sendProductWithCategory`, async (category) => {
+            const allProductsFromDB = await storageProducts.getAllProductsByCategory(category);
+            socket.emit(`allProducts`, allProductsFromDB);
         });
 
         socket.on(`addProducts`, async data => {
             const newProducto = {
                 title: `${data.name}`,
                 price: Number(data.price),
-                thumbnail: `${data.img}`
+                thumbnail: `${data.img}`,
+                category: `${data.category}`
             };
 
             //const product = await insertProduct(newProducto);
