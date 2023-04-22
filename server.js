@@ -84,10 +84,10 @@ app.use((req, res, next) => {
 
 app.use(session({
     store: MongoStore.create({
-        mongoUrl: `mongodb+srv://coderSegundaEntrega:chimuelo33@cluster0.felgak6.mongodb.net/?retryWrites=true&w=majority`,
+        mongoUrl: process.env.URL_MONGO,
         ttl: 10,
     }),
-    secret: '123456',
+    secret: process.env.SECRET,
     resave: true,
     saveUninitialized: true,
     cookie: { maxAge: 600000 }
