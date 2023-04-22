@@ -42,16 +42,14 @@ const loggerConsole = log4js.getLogger(`default`);
 const loggerArchiveWarn = log4js.getLogger(`warnArchive`);
 const loggerArchiveError = log4js.getLogger(`errorArchive`);
 
-// Servidor: modo CLUSTER / FORK
-//nodemon server --> ejecuta en puerto 8080
-//nodemon server -p xxxx --> ejecuta en puerto xxxx
+
 
 const cluster = require(`cluster`);
 const numCPUs = require(`os`).cpus().length;
 
 const CLUSTER = args.CLUSTER;
 
-// const PORT = args.p || 8080;
+
 const PORT = process.env.PORT || 5000;
 const runServer = (PORT) => {
     httpServer.listen(PORT, () => loggerConsole.debug(`Servidor escuchando el puerto ${PORT}`));
@@ -115,38 +113,29 @@ deserializeUser();
 //Routers import
 const homeRouter = require(`./routers/homeRouter`);
 const formRouter = require(`./routers/formRouter`);
-const productsRouter = require(`./routers/productsRouter`);
+const productsRouter = require(`./routers/productosRouter`);
 const loginRouterGet = require(`./routers/loginRouterGet`);
 const loginRouterPost = require(`./routers/loginRouterPost`);
 const chatRouter = require(`./routers/chatRouter`);
-const fakerRouter = require(`./routers/fakerRouter`);
-const infoRouter = require(`./routers/infoRouter`);
-const infoRouterCompression = require(`./routers/infoRouterCompression`);
-const objectRandomRouterGET = require(`./routers/objectRandomGETRouter`);
-const objectRandomRouterPOST = require(`./routers/objectRandomPOSTRouter`);
-const objectRandomRouterOUT = require(`./routers/objectRandomOUTRouter`);
 const login2RouterGet = require(`./routers/login2RouterGet`);
 const signup2Router = require(`./routers/signup2Router`);
 const bienvenidaRouter = require(`./routers/bienvenidaRouter`);
 const errorLogRouter = require(`./routers/errorLogRouter`);
 const errorSignupRouter = require(`./routers/errorSignupRouter`);
 const logoutRouter = require(`./routers/logoutRouter`);
-
+const carritoRouter = require(`./routers/carritoRouter`);
+const ordenesRouter = require(`./routers/ordenesRouter`);
 
 //Routers
-app.use(`/`, formRouter);
+app.use(`/`, homeRouter);
 app.use(`/login2`, login2RouterGet);
 app.use(`/nuevo-producto`, isLogged, formRouter);
+app.use(`/carrito`, isLogged, carritoRouter);
 app.use(`/productos`, isLogged, productsRouter);
+app.use(`/ordenes`, isLogged, ordenesRouter);
 app.use(`/login`, isLogged, loginRouterGet);
 app.use(`/login`, isLogged, loginRouterPost); //chat
 app.use(`/chat`, isLogged, chatRouter);
-app.use(`/api/productos-test`, isLogged, fakerRouter);
-app.use(`/info`, isLogged, infoRouter);
-app.use(`/infoCompression`, isLogged, infoRouterCompression);
-app.use(`/api/randoms`, isLogged, objectRandomRouterGET);
-app.use(`/api/randoms`, isLogged, objectRandomRouterPOST);
-app.use(`/objectRandomOUT`, objectRandomRouterOUT);
 app.use(`/signup2`, signup2Router);
 app.use(`/bienvenida`, isLogged, bienvenidaRouter);
 app.use(`/errorLog`, isLogged, errorLogRouter);

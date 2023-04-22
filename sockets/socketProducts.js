@@ -21,9 +21,12 @@ const socketIoProducts = (io) => {
 
         socket.on(`addProducts`, async data => {
             const newProducto = {
-                title: `${data.name}`,
-                price: Number(data.price),
-                thumbnail: `${data.img}`,
+                nombre: `${data.nombre}`,
+                descripcion:  `${data.descripcion}`,
+                codigo:  `${data.codigo}`,
+                thumbnail: `${data.thumbnail}`,
+                precio: Number(data.precio),
+                stock:  `${data.stock}`,
                 category: `${data.category}`
             };
 
@@ -39,3 +42,4 @@ const socketIoProducts = (io) => {
 }
 
 module.exports = socketIoProducts;
+

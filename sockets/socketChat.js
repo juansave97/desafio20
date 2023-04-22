@@ -1,5 +1,5 @@
-const MessageDAOMongoDB = require(`../daos/MessageDAOMongoDB`);
 const mongoose = require('mongoose');
+const MessageDAOMongoDB = require(`../daos/MessageDAOMongoDB`);
 
 
 //Instancia contenedores:
@@ -21,7 +21,7 @@ const socketIoChat = (io) => {
             socket.emit(`notification`, `Bienvenido ${aliasName}`);
 
             const allMessageFromDB = await storageMessages.getAll();
-            console.log(allMessageFromDB);
+            // console.log(allMessageFromDB);
             //
 
             //Servidor --> Cliente : Se envian todos los mensajes al usuario que se conectó.
@@ -42,7 +42,7 @@ const socketIoChat = (io) => {
             const newMessage = {
                 author: {
                     id: user.aliasName,
-                    nombre: `Hard-code: Nombre del usuario`,
+                    nombre: user.username,
                     apellido: `Hard-code: Apellido del usuario`,
                     edad: `Hard-code: Edad`,
                     alias: `Hard-code: alias del usuario`,

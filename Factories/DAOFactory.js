@@ -1,5 +1,7 @@
 const ProductosDAOMongoDB = require(`../DAOs/ProductsDAOMongoDB`);
-const MessagesDAOMongoDB = require(`../DAOs/MessageDAOMongoDB`)
+const MessagesDAOMongoDB = require(`../DAOs/MessageDAOMongoDB`);
+const CarritoDAOMongoDB = require(`../DAOs/CarritoDAOMongoDB`);
+const OrdenesDAOMongoDB = require(`../DAOs/OrdenesDAOMongoDB`);
 
 const getStorage = () => {
     //const storage = process.env.STORAGE;
@@ -11,6 +13,8 @@ const getStorage = () => {
             return {
                 productos: new ProductosDAOMongoDB(),
                 mensajes: new MessagesDAOMongoDB(),
+                carrito: new CarritoDAOMongoDB(),
+                ordenes: new OrdenesDAOMongoDB(),
             }
             break
 
@@ -18,6 +22,8 @@ const getStorage = () => {
             return {
                 productos: new ProductosDAOMongoDB(),
                 mensajes: new MessagesDAOMongoDB(),
+                carrito: new CarritoDAOMongoDB(),
+                ordenes: new OrdenesDAOMongoDB(),
             }
             break
     }

@@ -45,11 +45,13 @@ socket.on(`users`, data => {
         .map(user => {
             const userTemplate = `
                 <li class="clearfix">
-                    <img src=${user.avatar} alt="avatar">
-                    <div class="about">
-                        <div class="name"> ${user.aliasName}</div>
-                        <div class="status"> <i class="fa fa-circle online"></i> Online </div>
-                    </div>
+                    <a href="/chat/${user.aliasName}">
+                        <img src=${user.avatar} alt="avatar">
+                        <div class="about">
+                            <div class="name"> ${user.aliasName}</div>
+                            <div class="status"> <i class="fa fa-circle online"></i> Online </div>
+                        </div>
+                    </a>
                 </li>
             `;
             return userTemplate;

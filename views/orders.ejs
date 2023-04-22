@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <%- include(`./partials/head`) %>
+</head>
+
+<body>
+    <header>
+        <%- include('./partials/headerLog', {current: `formProductos`}) %>
+    </header>
+
+    <div class="jumbotron">
+        <div class="jumbotron">
+            <% if (allOrders.length <=0) { %>
+                <p>No se encontraron datos.</p>
+                <% } else { %>
+                    <h1>Resumen de Ordenes</h1>
+                    <% allOrders.forEach(order=>{ %>
+                        <p>Orden ID: <%= order._id %></p>
+                        <p>Fecha:  <%= order.timestamp %></p>
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th scope="col">ID</th>
+                                <th scope="col">Nombre</th>
+                                <th scope="col">Descripcion</th>
+                                <th scope="col">Categoria</th>
+                                <th scope="col">Precio</th>
+                                <th scope="col">Stock</th>
+                                <th scope="col">Imagen</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                                <% order.products.forEach(product=>{ %>
+                                    <tr>
+                                        <td scope="row">
+                                            <%= product.id %>
+                                        </td>
+
+                                        <td>
+                                            <%= product.nombre %>
+                                        </td>
+                                        <td>
+                                            <%= product.descripcion %>
+                                        </td>
+                                        <td>
+                                            <a href="/productos/category/<%= product.category %>"><%= product.category %></a>
+                                        </td>
+                                        <td>
+                                            $<%= product.precio %>
+                                        </td>
+                                        <td>
+                                            <%= product.stock %>
+                                        </td>
+                                        <td>
+                                            <img src="<%= product.thumbnail %>" width="60" height="60">
+                                        </td>
+                                    </tr>
+                                <% }) %>
+                            </tbody>
+                        </table>
+                        <% }) %>
+                        <% } %>
+        </div>
+    </div>
+
+    <footer>
+        <%- include('./partials/footer') %>
+    </footer>
+
+</body>
+
+</html>
